@@ -365,7 +365,7 @@ class DataSet(object):
 # multi-label
 def dense_to_some_hot(labels_dense, num_classes=140):
 	"""Convert class labels from int vectors to many-hot vectors!"""
-	raise "TODO dense_to_some_hot"
+	raise ("TODO dense_to_some_hot")
 
 
 def one_hot_to_item(hot, items):

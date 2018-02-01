@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#!/usr/local/bin/python
+# !/usr/local/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import division, print_function, absolute_import
 
@@ -20,7 +20,7 @@ X, Y = next(batch)
 
 # train, test, _ = ,X
 trainX, trainY = X, Y
-testX, testY = X, Y #overfit for now
+testX, testY = X, Y  # overfit for now
 
 # Data preprocessing
 # Sequence padding
@@ -38,12 +38,13 @@ net = tflearn.fully_connected(net, classes, activation='softmax')
 net = tflearn.regression(net, optimizer='adam', learning_rate=learning_rate, loss='categorical_crossentropy')
 # Training
 model = tflearn.DNN(net, tensorboard_verbose=0)
-model.load("tflearn.lstm.model")
-while 1: #training_iters
-  model.fit(trainX, trainY, n_epoch=100, validation_set=(testX, testY), show_metric=True,
-          batch_size=batch_size)
-  _y=model.predict(X)
+# model.load("tflearn.lstm.model")
+n = 0
+while (n < training_iters):  # training_iters
+    model.fit(trainX, trainY, n_epoch=100, validation_set=(testX, testY), show_metric=True,
+              batch_size=batch_size)
+    n = n + 1
+    _y = model.predict(X)
 model.save("tflearn.lstm.model")
-print (_y)
-print (y)
+print(_y)
 
